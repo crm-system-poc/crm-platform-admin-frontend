@@ -71,7 +71,7 @@ export function AppBar() {
                     key={href}
                     href={href}
                     className={cn(
-                      "flex items-center gap-3 px-4 py-2 rounded-md text-base font-medium hover:bg-muted transition",
+                      "flex items-center gap-2 px-1 py-1 rounded-md text-base font-medium hover:bg-muted transition",
                       pathname === href && "bg-muted text-primary"
                     )}
                   >
@@ -92,7 +92,7 @@ export function AppBar() {
         </Link>
 
         {/* Desktop Menu */}
-        <nav className="hidden md:flex items-center gap-2 ml-16">
+        <nav className="hidden md:flex items-center gap-1 ml-16">
           {navItems
             .filter(item => permissions[item.perm])
             .map(({ href, label, icon: Icon }) => (

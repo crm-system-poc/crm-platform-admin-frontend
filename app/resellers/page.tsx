@@ -74,8 +74,8 @@ export default function ResellerListPage() {
 
   return (
     <div className="p-10 space-y-6">
-      <Card className="p-8">
-        <div className="flex justify-between items-center mb-6">
+      <Card className="p-6">
+        <div className="flex justify-between items-center ">
           <h1 className="text-3xl font-bold">Resellers</h1>
           {hasAction(user?.permissions, "manageResellers", "create") && (
           <Link href="/resellers/new">
@@ -90,7 +90,7 @@ export default function ResellerListPage() {
         <div className="border rounded-lg">
           <Table>
             <TableHeader>
-              <TableRow>
+              <TableRow className="bg-muted/40">
                 <TableHead>Name</TableHead>
                 <TableHead>Email</TableHead>
                 <TableHead>Phone</TableHead>

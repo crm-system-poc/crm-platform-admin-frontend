@@ -59,7 +59,7 @@ function getInitialPermissions(): any {
     manageResellers: false,
     resellerActions: {
       create: false,
-      read: true,
+      read: false,
       update: false,
       delete: false,
     },

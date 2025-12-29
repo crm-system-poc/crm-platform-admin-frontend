@@ -175,7 +175,7 @@ export default function PlatformStaffsPage() {
   // }
 
   return (
-    <div className="max-w-6xl mx-auto py-10">
+    <div className="max-w-7xl mx-auto py-8">
       <Card>
         <CardHeader className="flex flex-row justify-between items-center">
           <CardTitle>Platform Staffs</CardTitle>
@@ -189,7 +189,7 @@ export default function PlatformStaffsPage() {
             </Button>
           )} 
         </CardHeader>
-        <CardContent>
+        <CardContent >
           {loading ? (
             <div className="flex justify-center py-12">
               <Loader2 className="mr-2 h-6 w-6 animate-spin" />
@@ -201,9 +201,10 @@ export default function PlatformStaffsPage() {
               <AlertDescription>{error}</AlertDescription>
             </Alert>
           ) : (
-            <Table>
+            <div className="rounded-md border shadow-sm overflow-hidden">
+            <Table >
               <TableHeader>
-                <TableRow>
+                <TableRow className="bg-muted/40">
                   <TableHead>Name</TableHead>
                   <TableHead>Email</TableHead>
                   <TableHead>Phone</TableHead>
@@ -273,6 +274,7 @@ export default function PlatformStaffsPage() {
                 )}
               </TableBody>
             </Table>
+            </div>
           )}
         </CardContent>
       </Card>

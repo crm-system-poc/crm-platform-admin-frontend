@@ -222,7 +222,7 @@ export default function UpdatePlatformStaffPage() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto py-10">
+    <div className="max-w-8xl mx-auto py-10">
       <Card>
         <CardHeader>
           <CardTitle>Edit Platform Staff</CardTitle>
