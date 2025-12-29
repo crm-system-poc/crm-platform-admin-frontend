@@ -30,35 +30,36 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/components/context/AuthContext";
 import { hasAction, hasModule } from "@/lib/permissions";
 
-// // UPDATED INTERFACE ACCORDING TO THE NEW API DATA STRUCTURE
-// type StaffPermissions =
-//   | string[]
-//   | {
-//       manageHome?: boolean;
-//       managePlatformStaffs?: boolean;
-//       platformStaffActions?: {
-//         create?: boolean;
-//         read?: boolean;
-//         update?: boolean;
-//         delete?: boolean;
-//       };
-//       [key: string]: any;
-//     }
-//   | undefined;
+// UPDATED INTERFACE ACCORDING TO THE NEW API DATA STRUCTURE
+type StaffPermissions =
+  | string[]
+  | {
+      manageHome?: boolean;
+      managePlatformStaffs?: boolean;
+      platformStaffActions?: {
+        create?: boolean;
+        read?: boolean;
+        update?: boolean;
+        delete?: boolean;
+      };
+      [key: string]: any;
+    }
+  | undefined;
 
-// interface PlatformStaff {
-//   id: string;
-//   name: string;
-//   email: string;
-//   phone?: string | null;
-//   profileImage?: string | null;
-//   isActive: boolean;
-//   createdAt?: string;
-//   updatedAt?: string;
-//   lastLogin?: string;
-//   systemrole?: string;
-//   permissions?: StaffPermissions;
-// }
+interface PlatformStaff {
+  id: string;
+  name: string;
+  email: string;
+  phone?: string | null;
+  profileImage?: string | null;
+  isActive: boolean;
+  createdAt?: string;
+  updatedAt?: string;
+  lastLogin?: string;
+  role?: string;
+  systemrole?: string;
+  permissions?: StaffPermissions;
+}
 
 export default function PlatformStaffsPage() {
   const [staffs, setStaffs] = useState<PlatformStaff[]>([]);
@@ -67,9 +68,7 @@ export default function PlatformStaffsPage() {
 
   // For delete confirm dialog
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
-  const [deletingStaff, setDeletingStaff] = useState<PlatformStaff[] | null>(
-    []
-  );
+  const [deletingStaff, setDeletingStaff] = useState<PlatformStaff | null>(null);
   const [deleting, setDeleting] = useState(false);
 
   const router = useRouter();

@@ -27,6 +27,24 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
  * - managePlatformSettings: Boolean (default: false)
  *   - platformSettingsActions: { create, read, update, delete }
  */
+
+type ActionSet = {
+  create: boolean;
+  read: boolean;
+  update: boolean;
+  delete: boolean;
+};
+
+type Permissions = {
+  managePlatformHome: boolean;
+  managePlatformUsers: boolean;
+  platformUserActions: ActionSet;
+  manageResellers: boolean;
+  resellerActions: ActionSet;
+  managePlatformSettings: boolean;
+  platformSettingsActions: ActionSet;
+  [key: string]: any;
+};
 const PERMISSION_GROUPS = [
   {
     group: "Platform Home",
@@ -57,7 +75,7 @@ const PERMISSION_GROUPS = [
  
 ];
 
-function getInitialPermissions() {
+function getInitialPermissions(): Permissions {
   return {
     managePlatformHome: true,
     managePlatformUsers: false,
@@ -94,7 +112,7 @@ export default function UpdatePlatformStaffPage() {
     email: "",
     phone: "",
   });
-  const [permissions, setPermissions] = useState(getInitialPermissions());
+  const [permissions, setPermissions] = useState<Permissions>(getInitialPermissions());
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [fetchError, setFetchError] = useState<string | null>(null);
@@ -273,13 +291,13 @@ export default function UpdatePlatformStaffPage() {
                         {group.permissions.map((perm) => {
                           let checked = false;
                           if (perm.key.startsWith("platformUserActions.")) {
-                            const p = perm.key.split(".")[1];
+                            const p = perm.key.split(".")[1] as keyof ActionSet;
                             checked = !!permissions.platformUserActions?.[p];
                           } else if (perm.key.startsWith("resellerActions.")) {
-                            const p = perm.key.split(".")[1];
+                            const p = perm.key.split(".")[1] as keyof ActionSet;
                             checked = !!permissions.resellerActions?.[p];
                           } else if (perm.key.startsWith("platformSettingsActions.")) {
-                            const p = perm.key.split(".")[1];
+                            const p = perm.key.split(".")[1] as keyof ActionSet;
                             checked = !!permissions.platformSettingsActions?.[p];
                           } else {
                             checked = !!permissions[perm.key];
