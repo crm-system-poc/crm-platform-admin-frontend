@@ -59,9 +59,6 @@ const onSubmit = async (data: any) => {
       {
         email: data.email,
         password: data.password,
-      },
-      {
-        withCredentials: true,
       }
     );
 
