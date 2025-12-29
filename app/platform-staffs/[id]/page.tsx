@@ -104,7 +104,7 @@ function getInitialPermissions(): Permissions {
 
 export default function UpdatePlatformStaffPage() {
   const params = useParams();
-  const id = typeof params.id === "string" ? params.id : Array.isArray(params.id) ? params.id[0] : "";
+  const id = typeof params?.id === "string" ? params.id : Array.isArray(params?.id) ? params.id[0] : "";
   const router = useRouter();
 
   const [form, setForm] = useState({

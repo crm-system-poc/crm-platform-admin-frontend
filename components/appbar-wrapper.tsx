@@ -9,7 +9,7 @@ export function AppBarWrapper() {
   // Pages where AppBar should NOT appear
   const hideOnRoutes = ["/login", "/signup"];
 
-  if (hideOnRoutes.includes(pathname)) {
+  if (pathname && hideOnRoutes.includes(pathname)) {
     return null; // 👈 Do not render AppBar
   }
 

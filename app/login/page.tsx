@@ -37,7 +37,7 @@ const loginSchema = z.object({
   password: z.string().min(6, "Password must be at least 6 characters"),
 });
 
-export default function LoginPage() {
+export default function LoginPage(_props: any) {
   const router = useRouter();
   const { login } = useAuth();
 
@@ -106,10 +106,10 @@ const onSubmit = async (data: any) => {
 
           <CardHeader>
             <CardTitle className="text-2xl font-semibold text-center">
-              Admin Login
+              Platform Admin Login
             </CardTitle>
             <CardDescription className="text-center">
-              Login as an Admin to continue
+              Login as an platform Admin to continue
             </CardDescription>
           </CardHeader>
 
